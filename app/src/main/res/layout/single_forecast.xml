@@ -5,60 +5,67 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/secondary_color"
-    android:paddingHorizontal="24dp"
-    android:paddingVertical="16dp">
+    android:paddingVertical="16dp"
+    android:background="@android:color/transparent">
 
-    <ImageView
-        android:id="@+id/forecast_icon"
-        android:layout_width="52dp"
-        android:layout_height="52dp"
-        android:layout_gravity="center"
-        android:src="@drawable/ic_launcher_background"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="20dp">
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="24dp"
+        android:background="?attr/selectableItemBackgroundBorderless">
+
+        <ImageView
+            android:id="@+id/forecast_icon"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_launcher_background"/>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:layout_marginLeft="20dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/forecast_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dip"
+                    android:textStyle="bold"
+                    android:textColor="@color/font_color_primary"
+                    android:text="Monday, 3 Oct"/>
+
+                <TextView
+                    android:id="@+id/forecast_condition"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dip"
+                    android:textStyle="bold"
+                    android:textColor="@color/font_color_secondary"
+                    android:text="Patchy rain possible" />
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/forecast_date"
+                android:id="@+id/forecast_avg_temp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="end|center"
+                android:layout_weight="1"
                 android:textSize="16dip"
                 android:textStyle="bold"
+                android:textAlignment="textEnd"
                 android:textColor="@color/font_color_primary"
-                android:text="Monday, 3 Oct"/>
+                android:text="32\u2103" />
 
-            <TextView
-                android:id="@+id/forecast_condition"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="16dip"
-                android:textStyle="bold"
-                android:textColor="@color/font_color_secondary"
-                android:text="Patchy rain possible" />
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/forecast_avg_temp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end|center"
-            android:layout_weight="1"
-            android:textSize="16dip"
-            android:textStyle="bold"
-            android:textAlignment="textEnd"
-            android:textColor="@color/font_color_primary"
-            android:text="32\u2103" />
-
     </LinearLayout>
 
 </LinearLayout>

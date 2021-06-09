@@ -19,23 +19,27 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="24dp"
+        android:background="@color/secondary_color"
         android:paddingLeft="24dp"
         android:paddingRight="24dp">
 
         <ImageView
             android:id="@+id/to_main"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
+            android:layout_width="34dp"
+            android:layout_height="52dp"
             android:layout_gravity="center"
+            android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/baseline_keyboard_arrow_left_white_48dp"
             android:onClick="click"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:gravity="center"
+            android:clickable="true"
             android:paddingRight="28dp">
 
             <TextView

@@ -2,15 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="wrap_content"
     android:layout_width="wrap_content"
+    android:paddingHorizontal="6dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
-
 
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginVertical="8dp"
-        android:layout_marginLeft="14dp"
         app:cardCornerRadius="6dp"
         app:cardElevation="0dp">
 
