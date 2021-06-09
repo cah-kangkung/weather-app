@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/swiperefresh"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/primary_color"
+        tools:context=".MainActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4"
+            android:orientation="vertical"
+            android:animateLayoutChanges="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="32dp"
+                android:paddingLeft="24dp"
+                android:paddingRight="24dp">
+
+                <TextView
+                    android:id="@+id/location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="24dp"
+                    android:textStyle="bold"
+                    android:text="Region, "
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/country"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="24dp"
+                    android:text="State"
+                    android:textColor="@color/black"/>
+
+            </LinearLayout>
+
+            <!-- Progress Bar -->
+            <androidx.cardview.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/card_loading"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="24dp"
+                card_view:cardElevation="1dp"
+                card_view:cardCornerRadius="16dp"
+                android:backgroundTint="@color/secondary_color"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="24dp"
+                    android:orientation="vertical">
+
+                    <ProgressBar
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:indeterminate="true" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="@color/font_color_primary"
+                        android:textSize="16dp"
+                        android:text="Loading data..."/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Error Card -->
+            <androidx.cardview.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/card_alert"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="24dp"
+                card_view:cardElevation="1dp"
+                card_view:cardCornerRadius="16dp"
+                android:backgroundTint="@color/secondary_color"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="24dp"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="16dp"
+                        android:src="@drawable/baseline_sync_problem_white_48dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="@color/font_color_primary"
+                        android:textSize="20dp"
+                        android:text="Oops, Something went wrong!"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/font_color_primary"
+                        android:textSize="16dp"
+                        android:text="Pull down to refresh the page"/>
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Data View -->
+            <androidx.cardview.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/card_view"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="24dp"
+                card_view:cardElevation="1dp"
+                card_view:cardCornerRadius="16dp"
+                android:backgroundTint="@color/secondary_color"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/current_icon"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/ic_launcher_background"/>
+
+                    <TextView
+                        android:id="@+id/condition"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:textSize="24dp"
+                        android:textColor="@color/font_color_primary"
+                        android:text="Condition"/>
+
+                    <TextView
+                        android:id="@+id/last_updated"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:textSize="16dp"
+                        android:textColor="@color/font_color_secondary_variant"
+                        android:text="Last Updated"/>
+
+                    <TextView
+                        android:id="@+id/temp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:textSize="80dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/font_color_primary"
+                        android:text="24\u2103"/>
+
+                    <!--  The rest of the data goes in this grid layout -->
+                    <GridLayout
+                        android:columnCount="2"
+                        android:rowCount="3"
+                        android:alignmentMode="alignMargins"
+                        android:columnOrderPreserved="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingBottom="12dp">
+
+                        <!--Wind-->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_columnWeight="1"
+                            android:layout_rowWeight="1"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="32dp">
+
+                            <ImageView
+                                android:id="@+id/current_wind_icon"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:layout_marginRight="20dp"
+                                android:src="@drawable/baseline_air_white_48dp"
+                                app:tint="@color/font_color_primary" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/font_color_secondary"
+                                    android:textSize="12dp"
+                                    android:text="WIND"/>
+
+                                <TextView
+                                    android:id="@+id/current_wind_text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/font_color_primary"
+                                    android:text="19.2km/h"/>
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <!-- Pressure -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_columnWeight="1"
+                            android:layout_rowWeight="1"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="32dp">
+
+                            <ImageView
+                                android:id="@+id/current_pressure_icon"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:layout_marginRight="20dp"
+                                android:src="@drawable/baseline_compress_white_48dp"
+                                card_view:tint="@color/font_color_primary" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/font_color_secondary"
+                                    android:textSize="12dp"
+                                    android:text="PRESSURE"/>
+
+                                <TextView
+                                    android:id="@+id/current_pressure_text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/font_color_primary"
+                                    android:text="1008.0mbar"/>
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <!-- Precip -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_columnWeight="1"
+                            android:layout_rowWeight="1"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="32dp">
+
+                            <ImageView
+                                android:id="@+id/current_precip_icon"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:layout_marginRight="20dp"
+                                android:src="@drawable/baseline_water_white_48dp"/>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/font_color_secondary"
+                                    android:textSize="12dp"
+                                    android:text="PRECIP"/>
+
+                                <TextView
+                                    android:id="@+id/current_precip_text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/font_color_primary"
+                                    android:text="0.1mm"/>
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <!-- Humidity -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_columnWeight="1"
+                            android:layout_rowWeight="1"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="32dp">
+
+                            <ImageView
+                                android:id="@+id/current_humidity_icon"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:layout_marginRight="20dp"
+                                android:src="@drawable/baseline_water_drop_white_48dp"/>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/font_color_secondary"
+                                    android:textSize="12dp"
+                                    android:text="HUMIDITY"/>
+
+                                <TextView
+                                    android:id="@+id/current_humidity_text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/font_color_primary"
+                                    android:text="71%"/>
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <!-- Cloud -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_columnWeight="1"
+                            android:layout_rowWeight="1"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="32dp">
+
+                            <ImageView
+                                android:id="@+id/current_cloud_icon"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:layout_marginRight="20dp"
+                                android:src="@drawable/baseline_cloud_white_48dp"/>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/font_color_secondary"
+                                    android:textSize="12dp"
+                                    android:text="Cloud"/>
+
+                                <TextView
+                                    android:id="@+id/current_cloud_text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/font_color_primary"
+                                    android:text="50%"/>
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <!-- Gust -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_columnWeight="1"
+                            android:layout_rowWeight="1"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="32dp">
+
+                            <ImageView
+                                android:id="@+id/current_gust_icon"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:layout_marginRight="20dp"
+                                android:src="@drawable/baseline_air_white_48dp"
+                                card_view:tint="@color/font_color_primary" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/font_color_secondary"
+                                    android:textSize="12dp"
+                                    android:text="Gust"/>
+
+                                <TextView
+                                    android:id="@+id/current_gust_text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/font_color_primary"
+                                    android:text="6.8km/h"/>
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </GridLayout>
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:paddingTop="8dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:animateLayoutChanges="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="24dp"
+                android:paddingRight="24dp"
+                android:layout_marginBottom="4dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Today"
+                    android:textStyle="bold"
+                    android:textSize="18dp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/to_forecast"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="Next 3 Days >"
+                    android:textSize="18dp"
+                    android:clickable="true"
+                    android:onClick="click"/>
+            </LinearLayout>
+
+            <!-- Hour Loading -->
+            <LinearLayout
+                android:id="@+id/hour_loading_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <ProgressBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:indeterminate="true" />
+            </LinearLayout>
+
+            <!-- Hour Data -->
+            <LinearLayout
+                android:id="@+id/hour_data_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:visibility="gone">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/current_hour_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:listitem="@layout/single_current_hour"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

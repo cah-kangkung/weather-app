@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/forecast_swiperefresh"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+    <LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:animateLayoutChanges="true"
+    android:background="@color/secondary_color"
+    tools:context=".ForecastActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="24dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp">
+
+        <ImageView
+            android:id="@+id/to_main"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_gravity="center"
+            android:src="@drawable/baseline_keyboard_arrow_left_white_48dp"
+            android:onClick="click"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingRight="28dp">
+
+            <TextView
+                android:id="@+id/location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/font_color_primary"
+                android:text="Region, "/>
+
+            <TextView
+                android:id="@+id/country"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textColor="@color/font_color_primary"
+                android:text="State"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="24dp"
+        android:layout_marginVertical="20dp"
+        android:textColor="@color/font_color_primary"
+        android:textSize="20dp"
+        android:text="Yesterday &amp; Next 3 Days"/>
+
+    <!-- Progess bar -->
+    <LinearLayout
+        android:id="@+id/progress_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:paddingBottom="100dp"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:indeterminate="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/font_color_primary"
+            android:textSize="16dp"
+            android:text="Loading data..."/>
+    </LinearLayout>
+
+    <!-- Error -->
+    <LinearLayout
+        android:id="@+id/error_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:paddingBottom="100dp"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/baseline_sync_problem_white_48dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/font_color_primary"
+            android:textSize="24dp"
+            android:text="Oops, Something went wrong!"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/font_color_primary"
+            android:textSize="16dp"
+            android:text="Pull down to refresh the page"/>
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/forecast_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/single_forecast"/>
+
+</LinearLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

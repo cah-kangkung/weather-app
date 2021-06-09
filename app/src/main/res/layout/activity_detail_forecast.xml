@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".DetailForecast">
+
+    <ImageView
+        android:id="@+id/detail_condition_icon"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal"/>
+
+    <TextView
+        android:id="@+id/detail_condition_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        android:text="Condition"/>
+
+    <TextView
+        android:id="@+id/detail_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        android:text="Date"/>
+
+    <TextView
+        android:id="@+id/detail_maxtemp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        android:text="Max Temp"/>
+
+    <TextView
+        android:id="@+id/detail_mintemp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        android:text="Min Temp"/>
+
+    <TextView
+        android:id="@+id/detail_avgtemp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        android:text="Average Temp"/>
+
+    <TextView
+        android:id="@+id/detail_maxwind"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        android:text="Max Wind"/>
+
+    <TextView
+        android:id="@+id/detail_totalprecip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        android:text="Total Precip"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/hour_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/single_hour"/>
+
+
+</LinearLayout>
