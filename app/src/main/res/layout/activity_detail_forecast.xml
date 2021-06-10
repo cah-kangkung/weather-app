@@ -1,79 +1,311 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<LinearLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    tools:context=".DetailForecast">
+    android:background="@color/primary_color"
+    tools:context=".MainActivity"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <ImageView
-        android:id="@+id/detail_condition_icon"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center_horizontal"/>
-
-    <TextView
-        android:id="@+id/detail_condition_text"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="24dp"
-        android:textStyle="bold"
-        android:text="Condition"/>
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:orientation="vertical"
+        android:animateLayoutChanges="true">
 
-    <TextView
-        android:id="@+id/detail_date"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="32dp"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp">
+
+            <ImageView
+                android:id="@+id/back_forecast"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="-8dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/baseline_keyboard_arrow_left_black_48dp"
+                android:onClick="click"/>
+
+            <TextView
+                android:id="@+id/detail_title_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:textSize="24dp"
+                android:textStyle="bold"
+                android:text="Sunday, "
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/detail_title_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24dp"
+                android:text="03 June"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+
+        <!-- Detail View -->
+        <androidx.cardview.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_view"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="24dp"
+            card_view:cardElevation="1dp"
+            card_view:cardCornerRadius="16dp"
+            android:backgroundTint="@color/secondary_color"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="28dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/detail_condition_icon"
+                        android:layout_width="72dp"
+                        android:layout_height="72dp"
+                        android:layout_marginBottom="8dp"
+                        android:src="@drawable/ic_launcher_background"/>
+
+                    <TextView
+                        android:id="@+id/detail_condition_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="24dp"
+                        android:layout_marginBottom="4dp"
+                        android:textColor="@color/font_color_primary"
+                        android:text="Condition"/>
+
+                    <TextView
+                        android:id="@+id/detail_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16dp"
+                        android:textColor="@color/font_color_secondary_variant"
+                        android:text="Last Updated"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/detail_avgtemp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="-20dp"
+                        android:textSize="70dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/font_color_primary"
+                        android:text="24&#xb0;"/>
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="24dp"
-        android:textStyle="bold"
-        android:text="Date"/>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="-16dp"
+        android:animateLayoutChanges="true">
 
-    <TextView
-        android:id="@+id/detail_maxtemp"
+        <!-- Data View -->
+        <androidx.cardview.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginVertical="8dp"
+            card_view:cardElevation="1dp"
+            card_view:cardCornerRadius="16dp"
+            android:visibility="visible">
+
+            <!--  The rest of the data goes in this grid layout -->
+            <GridLayout
+                android:columnCount="4"
+                android:rowCount="1"
+                android:alignmentMode="alignMargins"
+                android:columnOrderPreserved="false"
+                android:padding="24dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/card_detail_border">
+
+                <!-- Precip -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="12dp"
+                        android:text="PRECIP"/>
+
+                    <TextView
+                        android:id="@+id/detail_totalprecip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:text="0.1mm"/>
+                </LinearLayout>
+
+                <!--Max Temp-->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="12dp"
+                        android:text="MAX TEMP"/>
+
+                    <TextView
+                        android:id="@+id/detail_maxtemp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:text="28\u2103"/>
+                </LinearLayout>
+
+                <!-- Min temp -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="12dp"
+                        android:text="MIN TEMP"/>
+
+                    <TextView
+                        android:id="@+id/detail_mintemp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:text="18\u2103"/>
+                </LinearLayout>
+
+                <!-- Precip -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="12dp"
+                        android:text="MAX WIND"/>
+
+                    <TextView
+                        android:id="@+id/detail_maxwind"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:text="15km/h"/>
+                </LinearLayout>
+
+            </GridLayout>
+
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="24dp"
-        android:textStyle="bold"
-        android:text="Max Temp"/>
+        android:layout_height="0dp"
+        android:paddingTop="8dp"
+        android:layout_weight="3"
+        android:orientation="vertical"
+        android:animateLayoutChanges="true">
 
-    <TextView
-        android:id="@+id/detail_mintemp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="24dp"
-        android:textStyle="bold"
-        android:text="Min Temp"/>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="24dp"
+            android:paddingRight="12dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="4dp">
 
-    <TextView
-        android:id="@+id/detail_avgtemp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="24dp"
-        android:textStyle="bold"
-        android:text="Average Temp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hourly Report"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:textColor="@color/black"/>
+        </FrameLayout>
 
-    <TextView
-        android:id="@+id/detail_maxwind"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="24dp"
-        android:textStyle="bold"
-        android:text="Max Wind"/>
+        <!-- Hour Data -->
+        <LinearLayout
+            android:id="@+id/hour_data_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingTop="8dp"
+            android:visibility="visible">
 
-    <TextView
-        android:id="@+id/detail_totalprecip"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="24dp"
-        android:textStyle="bold"
-        android:text="Total Precip"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/hour_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/single_hour"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/hour_list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:listitem="@layout/single_hour"/>
-
+        </LinearLayout>
+    </LinearLayout>
 
 </LinearLayout>

@@ -1,5 +1,6 @@
 package com.hafiz_1313617032_uts.weatherapp.Adapter;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hafiz_1313617032_uts.weatherapp.Model.ForeCastDayModel.ForecastDayModel;
@@ -37,6 +39,10 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.ListVi
 
     @Override
     public void onBindViewHolder(@NonNull ListViewHolder holder, int position) {
+        if (position == 0) {
+            holder.itemView.setClickable(false);
+            holder.itemView.setBackgroundColor(Color.parseColor("#3EC3BDBD"));
+        }
         String lastUpdate = listForecastDay.get(position).getDate();
         SimpleDateFormat fromResponse = new SimpleDateFormat("yyyy-MM-dd");
         SimpleDateFormat myFormat = new SimpleDateFormat("EEEE, dd MMM");
