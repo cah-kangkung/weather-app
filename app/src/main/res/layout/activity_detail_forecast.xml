@@ -189,7 +189,7 @@
                     android:layout_rowWeight="1"
                     android:gravity="center_vertical"
                     android:orientation="vertical"
-                    android:layout_marginLeft="16dp">
+                    android:layout_marginLeft="0dp">
 
                     <TextView
                         android:layout_width="wrap_content"

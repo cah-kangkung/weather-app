@@ -59,7 +59,7 @@
                 card_view:cardElevation="1dp"
                 card_view:cardCornerRadius="16dp"
                 android:backgroundTint="@color/secondary_color"
-                android:visibility="visible">
+                android:visibility="gone">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -140,7 +140,7 @@
                 card_view:cardElevation="1dp"
                 card_view:cardCornerRadius="16dp"
                 android:backgroundTint="@color/secondary_color"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -242,7 +242,8 @@
                             android:layout_columnWeight="1"
                             android:layout_rowWeight="1"
                             android:gravity="center_vertical"
-                            android:paddingLeft="32dp">
+                            android:paddingLeft="32dp"
+                            android:paddingRight="32dp">
 
                             <ImageView
                                 android:id="@+id/current_pressure_icon"
@@ -321,7 +322,8 @@
                             android:layout_columnWeight="1"
                             android:layout_rowWeight="1"
                             android:gravity="center_vertical"
-                            android:paddingLeft="32dp">
+                            android:paddingLeft="32dp"
+                            android:paddingRight="32dp">
 
                             <ImageView
                                 android:id="@+id/current_humidity_icon"
@@ -399,7 +401,8 @@
                             android:layout_columnWeight="1"
                             android:layout_rowWeight="1"
                             android:gravity="center_vertical"
-                            android:paddingLeft="32dp">
+                            android:paddingLeft="32dp"
+                            android:paddingRight="32dp">
 
                             <ImageView
                                 android:id="@+id/current_gust_icon"
