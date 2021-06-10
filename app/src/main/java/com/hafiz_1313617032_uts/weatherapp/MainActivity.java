@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                         tv_lastUpdated.setText(reformatDate);
 
                         tv_windKph.setText(Double.toString(response.body().getCurrent().getWind_kph()) + "km/h");
-                        tv_pressureMb.setText(Double.toString(response.body().getCurrent().getPressure_mb()) + "mbar");
+                        tv_pressureMb.setText((int)(response.body().getCurrent().getPressure_mb()) + "mbar");
                         tv_precipMM.setText(Double.toString(response.body().getCurrent().getPrecip_mm()) + "mm");
                         tv_humidity.setText(Integer.toString(response.body().getCurrent().getHumidity()) + "%");
                         tv_cloud.setText(Integer.toString(response.body().getCurrent().getCloud()) + "%");

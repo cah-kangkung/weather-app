@@ -59,7 +59,7 @@
                 card_view:cardElevation="1dp"
                 card_view:cardCornerRadius="16dp"
                 android:backgroundTint="@color/secondary_color"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -140,7 +140,7 @@
                 card_view:cardElevation="1dp"
                 card_view:cardCornerRadius="16dp"
                 android:backgroundTint="@color/secondary_color"
-                android:visibility="visible">
+                android:visibility="gone">
 
                 <LinearLayout
                     android:layout_width="match_parent"
